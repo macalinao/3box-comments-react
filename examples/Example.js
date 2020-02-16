@@ -1,8 +1,8 @@
-import React from 'react';
-import Box from '3box';
+import React from "react";
+import Box from "3box";
 
-import Comments from '../src/index';
-import './index.scss';
+import Comments from "../src/index";
+import "./index.scss";
 
 class Example extends React.Component {
   constructor(props) {
@@ -10,9 +10,9 @@ class Example extends React.Component {
     this.state = {
       box: {},
       myProfile: {},
-      myAddress: '',
-      isReady: false,
-    }
+      myAddress: "",
+      isReady: false
+    };
   }
 
   componentDidMount() {
@@ -28,42 +28,21 @@ class Example extends React.Component {
 
     box.onSyncDone(() => this.setState({ box }));
     this.setState({ box, myProfile, myAddress, isReady: true });
-  }
+  };
 
   render() {
-    const {
-      box,
-      myAddress,
-    } = this.state;
+    const { box, myAddress } = this.state;
 
-    return (
-      <div className="App">
-        <div className="page">
-          <div className="page_dapp">
-            <h2 className="page_description">
-              3Box Comments Demo
-            </h2>
-            <div className="page_content">
-              <p>
-                Your super cool dApp
-            </p>
-            </div>
-          </div>
-
-          <div className="userscontainer">
-            {box && (
-              <Comments
-                spaceName='3boxtestcomments'
-                threadName='explicitNestLevel6'
-                adminEthAddr="0x2a0D29C819609Df18D8eAefb429AEC067269BBb6"
-
-                box={box}
-                currentUserAddr={myAddress}
-              />
-            )}
-          </div>
-        </div>
-      </div>
+    return box ? (
+      <Comments
+        spaceName="3boxtestcomments"
+        threadName="explicitNestLevel6"
+        adminEthAddr="0x2a0D29C819609Df18D8eAefb429AEC067269BBb6"
+        box={box}
+        currentUserAddr={myAddress}
+      />
+    ) : (
+      <div />
     );
   }
 }
