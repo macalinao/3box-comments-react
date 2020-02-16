@@ -15,15 +15,7 @@
     "ethereum"
   ],
   "scripts": {
-    "build": "webpack --config webpack.config.babel.js",
-    "build:es5": "rm -rf ./lib; ./node_modules/.bin/babel src --out-dir lib --source-maps inline --copy-files --ignore=src/__tests__/,src/__mocks__/",
-    "build-examples": "webpack --config examples/webpack.config.babel.js --progress",
-    "clean": "rm -rf dist coverage",
-    "coverage": "jest --coverage",
-    "lint": "eslint ./src",
-    "prepublish": "npm run clean && npm run test && npm run build",
-    "start": "webpack-dev-server --config examples/webpack.config.live.babel.js",
-    "test": "npm run lint && npm run coverage"
+    "build": "webpack --config examples/webpack.config.babel.js --progress"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
